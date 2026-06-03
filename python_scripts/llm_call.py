@@ -16,13 +16,13 @@ import re
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def get_response_from_chatgpt_openai(prompt: str, model_name: str, temperature: str):
-    os.environ["http_proxy"] = "http://10.105.20.64:7890"
-    os.environ["https_proxy"] = "http://10.105.20.64:7890"
+    os.environ["http_proxy"] = ""
+    os.environ["https_proxy"] = ""
     # Set up the OpenAI API client
 
     client = OpenAI(
         ## wzl
-        api_key = "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",
+        api_key = "",
     )
 
     temperature_float = float(temperature)
@@ -250,7 +250,7 @@ def get_response_from_qwen(prompt: str, ent1, ent2_list):
         "text": prompt
     })
     data = {
-        "model": "glm",
+        "model": "qwen3-vl:32b",
         "chat_template_kwargs":{"enable_thinking":False},
         "messages": [
 
@@ -261,7 +261,7 @@ def get_response_from_qwen(prompt: str, ent1, ent2_list):
         ],
         "temperature": 0.0
     }
-    API_BASE = "http://192.168.135.219:8000/v1"
+    API_BASE = ""
     response = requests.post(
         f"{API_BASE}/chat/completions",
         headers={"Content-Type": "application/json"},
@@ -294,7 +294,7 @@ def get_qianfan_access_token():
 
 
 def get_response_from_ernie(prompt: str, temperature: str):
-    access_token = '24.6949dde494d9236abaeba7d318e23cc4.2592000.1718269449.282335-70479836'
+    access_token = ''
     url = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie-3.5-8k-0329?access_token=" + access_token
 
     if temperature == '0':
