@@ -21,7 +21,6 @@ def get_response_from_chatgpt_openai(prompt: str, model_name: str, temperature: 
     # Set up the OpenAI API client
 
     client = OpenAI(
-        ## wzl
         api_key = "",
     )
 
